@@ -59,7 +59,7 @@ public class DynamoUtils {
 			DynamoDBMapper mapper) {
 		
 		DynamoDBMapperConfig config = new DynamoDBMapperConfig(
-				DynamoDBMapperConfig.SaveBehavior.CLOBBER);
+				DynamoDBMapperConfig.SaveBehavior.UPDATE_SKIP_NULL_ATTRIBUTES);
 		mapper.batchWrite(bakupEntries, new ArrayList<BackupEntry>(), config);
 
 	}

@@ -1,6 +1,7 @@
 package com.sungardas.snapdirector.rest;
 
 import static com.sungardas.snapdirector.rest.utils.Constants.*;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +30,11 @@ import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
 import com.sungardas.snapdirector.aws.dynamodb.DynamoUtils;
 import com.sungardas.snapdirector.rest.utils.JsonFromStream;
 import com.sungardas.snapdirector.rest.utils.MultiReadHttpServletRequest;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController("/session")
 @Path("/session")
 public class AuthRestService {
 	private static final Log LOG = LogFactory.getLog(AuthRestService.class);
@@ -41,6 +46,7 @@ public class AuthRestService {
 
 	@POST()
 	@Produces(MediaType.APPLICATION_JSON)
+	@RequestMapping(method = POST)
 	public String login() {
 		MultiReadHttpServletRequest multiReadRequest = new MultiReadHttpServletRequest(
 				(HttpServletRequest) servletRequest);

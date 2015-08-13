@@ -22,7 +22,7 @@ public class DynamoUtilsTest {
 	private AmazonDynamoDBClient client = new AmazonDynamoDBClient(new EnvironmentBasedCredentialsProvider());
 	private DynamoDBMapper mapper = new DynamoDBMapper(client);
 	
-	/*@Test
+	@Test
 	public void testGetVolumeBackups() {
 		
 		
@@ -31,7 +31,7 @@ public class DynamoUtilsTest {
 		assertNotNull(items);
 		assertFalse(items.isEmpty());
 		
-	}*/
+	}
 	
 	@Test
 	public void testPutBackupInfo() {
@@ -39,9 +39,9 @@ public class DynamoUtilsTest {
 		double salt = Math.random();
 		
 		BackupEntry newBackup = new BackupEntry("vol-69dee6a0" + salt, "vol-69dee6a0111.backup","201507311025", "111111", BackupState.INPROGRESS);
-		/*newBackup.setVolumeId("vol-69dee6a0" + salt);
+		newBackup.setVolumeId("vol-69dee6a0" + salt);
 		newBackup.setFileName("vol-69dee6a0111.backup");
-		newBackup.setTimeCreated("201507311025");*/
+		newBackup.setTimeCreated("201507311025");
 
 		
 		List<BackupEntry> items = new ArrayList<BackupEntry>();
@@ -56,7 +56,7 @@ public class DynamoUtilsTest {
 		
 	}
 	
-	/*@Test
+	@Test
 	public void testRemoveBackupInfo() {
 		
 		
@@ -66,24 +66,24 @@ public class DynamoUtilsTest {
 		assertTrue(res);
 		assertFalse(res1);
 		
-	}*/
+	}
 	
 	
-	/*@Test
+	@Test
 	public void testAuthenticateUser(){
 		boolean info = DynamoUtils.authenticateUser("admin@sungard.com", "admin", mapper);
 		assertNotNull(info);
 		assertTrue(info);
 		
-	}*/
+	}
 	
-	
-	/*public void testGetFullUserInfo(){
+	@Test
+	public void testGetFullUserInfo(){
 		String info = DynamoUtils.getFullUserInfoByEmail("admin@sungard.com", mapper);
 		assertNotNull(info);
 		assertTrue(!info.isEmpty());
 		
-	}*/
+	}
 	
 	
 	

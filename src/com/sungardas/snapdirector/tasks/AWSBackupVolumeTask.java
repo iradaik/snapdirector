@@ -72,7 +72,7 @@ public class AWSBackupVolumeTask implements Task {
 			}
 		} catch (IOException e) {
 			LOG.fatal(format("Backup of volume %s failed", volumeId));
-			backup.setState(BackupState.FAILED.getState());
+			backup.setState(BackupState.FAILED);
 			DynamoUtils.putbackupInfo(backup, getMapper());
 		}
 		
@@ -83,7 +83,7 @@ public class AWSBackupVolumeTask implements Task {
 			
 			
 			LOG.info("Put backup entry to the Backup List: "+backup.toString());
-			backup.setState(BackupState.COMPLETED.getState());
+			backup.setState(BackupState.COMPLETED);
 			backup.setSize(String.valueOf(backupSize));
 			DynamoUtils.putbackupInfo(backup, getMapper());
 		}
