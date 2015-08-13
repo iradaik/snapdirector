@@ -11,7 +11,8 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.WebApplicationException;
 
 
-@RestController("/schedule")
+@RestController
+@RequestMapping("/schedule")
 public class ScheduleController {
 
     @Autowired

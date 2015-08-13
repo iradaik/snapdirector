@@ -1,7 +1,10 @@
 package com.sungardas.snapdirector.aws.dynamodb;
 
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.retry.PredefinedRetryPolicies;
+import com.amazonaws.retry.RetryPolicy;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
@@ -22,7 +25,7 @@ public class DynamoDBConfig {
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
             AmazonDynamoDB amazonDynamoDB = new AmazonDynamoDBClient(
-                    amazonAWSCredentials());
+                    amazonAWSCredentials(), new ClientConfiguration().withRetryPolicy(new RetryPolicy(null, null, 3, true)));
         return amazonDynamoDB;
     }
 

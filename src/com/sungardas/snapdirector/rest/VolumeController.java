@@ -25,7 +25,8 @@ import java.util.List;
 
 import static com.sungardas.snapdirector.rest.utils.Constants.*;
 
-@RestController("/volume")
+@RestController
+@RequestMapping("/volume")
 public class VolumeController {
 
     private static final Logger LOG = LogManager.getLogger(VolumeController.class);
