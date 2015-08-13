@@ -7,6 +7,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
 import com.sungardas.snapdirector.aws.dynamodb.DynamoUtils;
 import com.sungardas.snapdirector.aws.dynamodb.model.User;
+import com.sungardas.snapdirector.aws.dynamodb.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ import com.sungardas.snapdirector.rest.utils.Constants;
 /**
  * Created by iradaik on 8/13/2015.
  */
-@RestController("/session")
+@RestController
+@RequestMapping("/session")
 public class AuthenticationController {
 
     private static final Logger LOG = LogManager.getLogger(AuthenticationController.class);
@@ -34,6 +36,8 @@ public class AuthenticationController {
     @Autowired
     private HttpServletRequest servletRequest;
 
+    @Autowired
+    private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody User user) {

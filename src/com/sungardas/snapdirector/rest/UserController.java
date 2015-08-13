@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)

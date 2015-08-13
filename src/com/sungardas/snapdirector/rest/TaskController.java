@@ -33,7 +33,8 @@ import java.util.List;
 
 import static java.lang.String.format;
 
-@RestController("/task")
+@RestController
+@RequestMapping("/task")
 public class TaskController {
 
     private static final Logger LOG = LogManager.getLogger(TaskController.class);

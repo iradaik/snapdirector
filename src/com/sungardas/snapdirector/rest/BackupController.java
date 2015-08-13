@@ -27,7 +27,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Controller("/backup")
+@RestController
+@RequestMapping("/backup")
 public class BackupController {
 
     private static final Logger LOG = LogManager.getLogger(BackupController.class);
