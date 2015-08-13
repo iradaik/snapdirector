@@ -23,7 +23,7 @@ final public class BackupEntry {
 		this.setFileName(fileName);
 		this.setTimeCreated(timeCreated);
 		this.setSize(size);
-		this.setState(state.getState());
+		this.setState(state);
 	}
 	
 	
@@ -70,8 +70,8 @@ final public class BackupEntry {
 		return (String) attributes.get("state");
 	}
 
-	public void setState(String state) {
-		attributes.put("state", state);
+	public void setState(BackupState state) {
+		attributes.put("state", state.getState());
 	}
 
 	@Override
