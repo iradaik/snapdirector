@@ -2,8 +2,6 @@ package com.sungardas.snapdirector.aws.dynamodb;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
@@ -22,14 +20,10 @@ public class DynamoDBConfig {
     @Value("${amazon.aws.secretkey}")
     private String amazonAWSSecretKey;
 
-    @Value("${region}")
-    private String region;
-
 
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         AmazonDynamoDB amazonDynamoDB = new AmazonDynamoDBClient(new EnvironmentBasedCredentialsProvider());
-        amazonDynamoDB.setRegion(Region.getRegion(Regions.fromName(region)));
         return amazonDynamoDB;
     }
 
