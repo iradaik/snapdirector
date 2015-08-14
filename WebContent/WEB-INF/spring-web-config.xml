@@ -20,6 +20,8 @@
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
+    <context:property-placeholder location="classpath:/amazon.properties,file:${catalina.home}/conf/amazon.properties" ignore-resource-not-found="true"/>
+
     <mvc:annotation-driven />
 
 </beans>

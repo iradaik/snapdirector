@@ -1,14 +1,13 @@
 package com.sungardas.snapdirector.aws;
 
-import static java.lang.String.format;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.sungardas.snapdirector.worker.CommandLineArgumentsProvider;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import static java.lang.String.format;
 
 public class SysProperiesBasedCredentialsProvider implements
 		AWSCredentialsProvider {

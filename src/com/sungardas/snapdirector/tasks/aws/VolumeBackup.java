@@ -1,50 +1,32 @@
 package com.sungardas.snapdirector.tasks.aws;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.text.Format;
-import java.util.LinkedList;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.OptionGroup;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.cli.PosixParser;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2Client;
-import com.amazonaws.services.ec2.model.DescribeInstancesRequest;
-import com.amazonaws.services.ec2.model.DescribeInstancesResult;
-import com.amazonaws.services.ec2.model.DescribeVolumesRequest;
-import com.amazonaws.services.ec2.model.DescribeVolumesResult;
-import com.amazonaws.services.ec2.model.Instance;
-import com.amazonaws.services.ec2.model.Reservation;
-import com.amazonaws.services.ec2.model.Snapshot;
-import com.amazonaws.services.ec2.model.Volume;
+import com.amazonaws.services.ec2.model.*;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.sungardas.snapdirector.tasks.AWSBackupVolumeTask;
 import com.sungardas.snapdirector.tasks.aws.sdfs.SdfsConfigPathes;
 import com.sungardas.snapdirector.tasks.aws.sdfs.utils.S3Utils;
 import com.sungardas.snapdirector.tasks.aws.sdfs.utils.SdfsProcess;
-import com.sungardas.snapdirector.tasks.aws.sdfs.utils.TarUtils;
+import org.apache.commons.cli.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
-import static java.lang.String.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.String.format;
 
 
 public class VolumeBackup {

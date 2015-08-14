@@ -1,7 +1,10 @@
 package com.sungardas.snapdirector.worker;
 
 
-import java.util.concurrent.ExecutorService;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -10,12 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Servlet implementation class TaskWorkerInitializerServlet

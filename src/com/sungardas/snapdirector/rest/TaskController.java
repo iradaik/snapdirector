@@ -13,12 +13,11 @@ import com.amazonaws.services.sqs.model.SendMessageResult;
 import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
 import com.sungardas.snapdirector.aws.dynamodb.DynamoUtils;
 import com.sungardas.snapdirector.aws.dynamodb.model.TaskEntry;
-import com.sungardas.snapdirector.tasks.Task;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.Context;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -39,9 +37,10 @@ public class TaskController {
 
     private static final Logger LOG = LogManager.getLogger(TaskController.class);
 
-    @Context
-    ServletContext context;
-    @Context
+    @Autowired
+    private ServletContext context;
+
+    @Autowired
     private HttpServletRequest servletRequest;
 
 
@@ -53,16 +52,16 @@ public class TaskController {
         List<TaskEntry> taskModels = DynamoUtils.getTasks(getMapper(servletRequest));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         JSONArray tasks = new JSONArray();
-        for(TaskEntry nextTask:taskModels) {
+        for (TaskEntry nextTask : taskModels) {
             JSONObject jsonTask = new JSONObject();
             jsonTask.put("id", nextTask.getId());
-            jsonTask.put("priority",nextTask.getPriority());
-            jsonTask.put("schedulerManual",Boolean.valueOf(nextTask.getSchedulerManual()));
-            jsonTask.put("schedulerName",nextTask.getSchedulerName());
-            jsonTask.put("schedulerTime",Long.valueOf(format.parse(nextTask.getSchedulerTime()).getTime()));
-            jsonTask.put("status",nextTask.getStatus());
-            jsonTask.put("type",nextTask.getType());
-            jsonTask.put("volume",nextTask.getVolume());
+            jsonTask.put("priority", nextTask.getPriority());
+            jsonTask.put("schedulerManual", Boolean.valueOf(nextTask.getSchedulerManual()));
+            jsonTask.put("schedulerName", nextTask.getSchedulerName());
+            jsonTask.put("schedulerTime", Long.valueOf(format.parse(nextTask.getSchedulerTime()).getTime()));
+            jsonTask.put("status", nextTask.getStatus());
+            jsonTask.put("type", nextTask.getType());
+            jsonTask.put("volume", nextTask.getVolume());
             tasks.put(jsonTask);
         }
 
@@ -93,7 +92,7 @@ public class TaskController {
             SendMessageRequest sendRequest = new SendMessageRequest(queueURL, body);
             sendRequest.setDelaySeconds(0);
             SendMessageResult sendResult = sqs.sendMessage(sendRequest);
-            LOG.info(format("TaskRestService: sended message: %s; body:%s", sendResult.getMessageId(),body)  );
+            LOG.info(format("TaskRestService: sended message: %s; body:%s", sendResult.getMessageId(), body));
         } catch (AmazonServiceException ase) {
             System.out.println("Caught an AmazonServiceException, which means your request made it " +
                     "to Amazon SQS, but was rejected with an error response for some reason.");

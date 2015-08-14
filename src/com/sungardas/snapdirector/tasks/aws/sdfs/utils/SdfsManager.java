@@ -1,32 +1,17 @@
 package com.sungardas.snapdirector.tasks.aws.sdfs.utils;
 
-import static java.lang.String.format;
+import com.sungardas.snapdirector.worker.WorkerConfiguration;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.Md5Utils;
-import com.sungardas.snapdirector.tasks.AWSBackupVolumeTask;
-import com.sungardas.snapdirector.tasks.aws.sdfs.SdfsConfigPathes;
-import com.sungardas.snapdirector.worker.WorkerConfiguration;
+import static java.lang.String.format;
 
 
 public class SdfsManager {

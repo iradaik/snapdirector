@@ -1,13 +1,13 @@
 package com.sungardas.snapdirector.aws.dynamodb.model;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.util.json.Jackson;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @DynamoDBTable(tableName = "BackupList")
 final public class BackupEntry {

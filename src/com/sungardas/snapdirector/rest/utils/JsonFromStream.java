@@ -1,13 +1,13 @@
 package com.sungardas.snapdirector.rest.utils;
 
-import java.io.InputStream;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import java.io.InputStream;
 
 public class JsonFromStream {
 	public static final Log LOG = LogFactory.getLog(JsonFromStream.class);

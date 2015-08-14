@@ -1,7 +1,4 @@
 package com.sungardas.snapdirector.quartz;
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -13,6 +10,9 @@ import com.amazonaws.services.sqs.AmazonSQSClient;
 import com.amazonaws.services.sqs.model.CreateQueueRequest;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
 import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 
 public class TestJob implements Job {
 

@@ -1,58 +1,27 @@
 package com.sungardas.snapdirector.aws;
 
-import static java.lang.String.format;
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.regions.Region;
+import com.amazonaws.services.ec2.AmazonEC2;
+import com.amazonaws.services.ec2.model.*;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-
-
-import org.apache.commons.logging.LogFactory;
-
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.regions.Region;
-import com.amazonaws.services.ec2.AmazonEC2;
-import com.amazonaws.services.ec2.model.AttachVolumeRequest;
-import com.amazonaws.services.ec2.model.AttachVolumeResult;
-import com.amazonaws.services.ec2.model.AvailabilityZone;
-import com.amazonaws.services.ec2.model.CreateSnapshotRequest;
-import com.amazonaws.services.ec2.model.CreateSnapshotResult;
-import com.amazonaws.services.ec2.model.CreateVolumeRequest;
-import com.amazonaws.services.ec2.model.CreateVolumeResult;
-import com.amazonaws.services.ec2.model.DeleteSnapshotRequest;
-import com.amazonaws.services.ec2.model.DeleteVolumeRequest;
-import com.amazonaws.services.ec2.model.DescribeAvailabilityZonesResult;
-import com.amazonaws.services.ec2.model.DescribeInstancesResult;
-import com.amazonaws.services.ec2.model.DescribeSnapshotsRequest;
-import com.amazonaws.services.ec2.model.DescribeSnapshotsResult;
-import com.amazonaws.services.ec2.model.DescribeVolumesRequest;
-import com.amazonaws.services.ec2.model.DescribeVolumesResult;
-import com.amazonaws.services.ec2.model.DetachVolumeRequest;
-import com.amazonaws.services.ec2.model.DetachVolumeResult;
-import com.amazonaws.services.ec2.model.Instance;
-import com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping;
-import com.amazonaws.services.ec2.model.Reservation;
-import com.amazonaws.services.ec2.model.Snapshot;
-import com.amazonaws.services.ec2.model.SnapshotState;
-import com.amazonaws.services.ec2.model.Volume;
-import com.amazonaws.services.ec2.model.VolumeAttachment;
-import com.amazonaws.services.ec2.model.VolumeState;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import static java.lang.String.format;
 
 
 public class S3Utils {

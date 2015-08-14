@@ -1,14 +1,13 @@
 package com.sungardas.snapdirector.aws.dynamodb.model;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.json.JSONObject;
-
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.util.json.Jackson;
+import org.json.JSONObject;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 @DynamoDBTable(tableName="Tasks")

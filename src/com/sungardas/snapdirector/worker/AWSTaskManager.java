@@ -1,15 +1,5 @@
 package com.sungardas.snapdirector.worker;
 
-import static java.lang.String.format;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -25,6 +15,15 @@ import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 import com.sungardas.snapdirector.aws.dynamodb.DynamoUtils;
 import com.sungardas.snapdirector.aws.dynamodb.model.TaskEntry;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.String.format;
 
 public class AWSTaskManager implements Runnable {
 	public static final Log LOG = LogFactory.getLog(AWSTaskManager.class);

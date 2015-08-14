@@ -1,15 +1,14 @@
 package com.sungardas.snapdirector.rest;
 
-import static com.sungardas.snapdirector.rest.utils.Constants.CONTEXT_ALLOWED_SESSIONS_ATR_NAME;
-
-import java.util.Set;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import static com.sungardas.snapdirector.rest.utils.Constants.CONTEXT_ALLOWED_SESSIONS_ATR_NAME;
 
 @WebListener
 public class SessionAuthentificationListener implements HttpSessionListener {
