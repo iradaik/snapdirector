@@ -1,22 +1,17 @@
 package com.sungardas.snapdirector.tasks.aws.sdfs.utils;
 
-import static java.lang.String.format;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.util.BinaryUtils;
 import com.amazonaws.util.Md5Utils;
 import com.sungardas.snapdirector.tasks.aws.sdfs.SdfsConfigPathes;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.io.*;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.String.format;
 
 
 public class SdfsProcess {

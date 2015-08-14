@@ -1,35 +1,26 @@
 package com.sungardas.snapdirector.rest;
 
-import static com.sungardas.snapdirector.rest.utils.Constants.CONTEXT_ALLOWED_SESSIONS_ATR_NAME;
-import static com.sungardas.snapdirector.rest.utils.Constants.JSON_AUTHENTIFICATION_EMAIL;
-import static com.sungardas.snapdirector.rest.utils.Constants.JSON_AUTHENTIFICATION_PASSWORD;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.json.JSONObject;
-
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.sungardas.snapdirector.aws.EnvironmentBasedCredentialsProvider;
 import com.sungardas.snapdirector.aws.dynamodb.DynamoUtils;
 import com.sungardas.snapdirector.rest.utils.JsonFromStream;
 import com.sungardas.snapdirector.rest.utils.MultiReadHttpServletRequest;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.json.JSONObject;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.sungardas.snapdirector.rest.utils.Constants.*;
 
 @WebFilter("/rest/*")
 public class RestAuthenticationFilter implements Filter {

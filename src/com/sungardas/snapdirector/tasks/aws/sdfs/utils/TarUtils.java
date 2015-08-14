@@ -1,26 +1,19 @@
 package com.sungardas.snapdirector.tasks.aws.sdfs.utils;
 
-import static java.lang.String.format;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-
+import com.amazonaws.util.BinaryUtils;
+import com.amazonaws.util.Md5Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.kamranzafar.jtar.TarEntry;
 import org.kamranzafar.jtar.TarInputStream;
 import org.kamranzafar.jtar.TarOutputStream;
 
-import com.amazonaws.util.BinaryUtils;
-import com.amazonaws.util.Md5Utils;
+import java.io.*;
+import java.util.Collection;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+
+import static java.lang.String.format;
 
 
 public class TarUtils {

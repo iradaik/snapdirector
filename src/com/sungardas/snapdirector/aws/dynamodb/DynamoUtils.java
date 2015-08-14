@@ -1,12 +1,5 @@
 package com.sungardas.snapdirector.aws.dynamodb;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.json.JSONObject;
-
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper.FailedBatch;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
@@ -16,6 +9,12 @@ import com.amazonaws.services.ec2.model.Volume;
 import com.sungardas.snapdirector.aws.dynamodb.model.BackupEntry;
 import com.sungardas.snapdirector.aws.dynamodb.model.TaskEntry;
 import com.sungardas.snapdirector.aws.dynamodb.model.User;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * DynamoUtils is a Repository for static methods which manipulate data in

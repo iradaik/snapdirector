@@ -1,12 +1,5 @@
 package com.sungardas.snapdirector.tasks;
 
-import static java.lang.String.format;
-
-import java.io.IOException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
@@ -20,6 +13,12 @@ import com.sungardas.snapdirector.aws.dynamodb.model.BackupState;
 import com.sungardas.snapdirector.tasks.aws.VolumeBackup;
 import com.sungardas.snapdirector.tasks.aws.sdfs.utils.SdfsManager;
 import com.sungardas.snapdirector.worker.WorkerConfiguration;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
+
+import static java.lang.String.format;
 
 
 public class AWSBackupVolumeTask implements Task {

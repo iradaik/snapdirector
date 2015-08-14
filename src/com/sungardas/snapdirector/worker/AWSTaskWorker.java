@@ -1,13 +1,5 @@
 package com.sungardas.snapdirector.worker;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -19,6 +11,13 @@ import com.sungardas.snapdirector.aws.dynamodb.DynamoUtils;
 import com.sungardas.snapdirector.aws.dynamodb.model.TaskEntry;
 import com.sungardas.snapdirector.tasks.AWSBackupVolumeTask;
 import com.sungardas.snapdirector.tasks.Task;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class AWSTaskWorker implements Runnable {
