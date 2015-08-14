@@ -81,7 +81,7 @@ public class User {
 	}
 
 	public String getUserInfo() {
-		Map<String, Object> passwordLessUserInfo = new LinkedHashMap<>();
+		Map<String, Object> passwordLessUserInfo = new LinkedHashMap<String, Object>();
 		passwordLessUserInfo.putAll(attributes);
 		passwordLessUserInfo.remove("password");
 		return Jackson.toJsonString(passwordLessUserInfo);
